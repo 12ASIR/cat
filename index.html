@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>燕子的喂猫小网站</title>
+  </head>
+  <style>
+    @font-face {
+      font-family: "LiuHuanCartoon"; /* 指定字体名称 */
+      src: url("liuhuankatong.ttf") format("truetype"); /* 指定字体文件路径和格式 */
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #eee;
+      font-size: 13px;
+      font-family: "FangSong", "仿宋", sans-serif;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex1 {
+      flex: 1;
+    }
+    .column {
+      flex-direction: column;
+    }
+    .yinYing {
+      box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+        rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px -0px;
+    }
+    .baiSe {
+      background-color: #fff;
+    }
+    .mg8 {
+      margin: 8px;
+    }
+    .mgr8 {
+      margin-right: 8px;
+    }
+    .mgt8 {
+      margin-top: 8px;
+    }
+    .shuJu {
+      height: 100px;
+    }
+    .liebiaoxiang {
+      height: 160px;
+    }
+    .daoHang {
+      padding: 10px 20px;
+      border-bottom: 1px solid rgb(201, 201, 201);
+      font-size: 14px;
+      color: #666;
+    }
+    /* 模态窗口样式 */
+    .modal {
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 模态窗口内容样式 */
+    .modal-content {
+      max-width: 60%; /* 限制最大宽度 */
+      max-height: 60%; /* 限制最大高度 */
+      object-fit: contain; /* 保持图片宽高比 */
+    }
+    /* 关闭按钮样式 */
+    .close {
+      position: absolute;
+      top: 60px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .ktZi {
+      font-family: "LiuHuanCartoon", sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      .ceBian {
+        display: none;
+      }
+      .neiRong {
+        flex-direction: column;
+      }
+      .shujuQu {
+        flex-direction: column;
+      }
+      .youQu {
+        margin-left: 8px;
+      }
+      .shuJu {
+        margin: 0 0 8px;
+        flex: auto;
+      }
+    }
+    .ceBian {
+      height: auto;
+    }
+  </style>
+  <body class="flex">
+    <!--侧边栏-->
+    <div
+      style="width: 200px; z-index: 3"
+      class="flex column baiSe yinYing ceBian"
+    >
+      <!--侧边头像栏-->
+      <div
+        style="
+          padding: 10px;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid #999;
+        "
+        class="flex"
+      >
+        <img alt="logo" src=".\albumCat\logo.jpg" width="40px" height="40px" />
+        <div style="margin-left: 10px" class="ktZi">
+          燕子（罗弋） <br />17728020974
+        </div>
+      </div>
+      <!--导航栏-->
+      <div class="flex1 ktZi">
+        <div class="daoHang">
+          <a href="self.html" style="color: #666">个人简介</a>
+        </div>
+        <div class="daoHang">
+          <a href="albumCat.html" style="color: #666"> 猫猫影集</a>
+        </div>
+        <div class="daoHang">
+          <a href="other.html" style="color: #666">其他业务</a>
+        </div>
+      </div>
+    </div>
+    <!--主区域-->
+    <div class="flex flex1 column">
+      <!--头部栏-->
+      <div style="height: 60px; z-index: 2" class="baiSe yinYing"></div>
+      <!--内容区-->
+      <div class="flex flex1 neiRong" style="overflow: auto">
+        <!--左区-->
+        <div style="flex: 3" class="flex column mg8">
+          <!--数据区-->
+          <div class="flex shuJuQu">
+            <!--四个小块显示重点数据-->
+            <div class="baiSe yinYing flex1 shuJu mgr8 ktZi">
+              爱宠喂养(只)
+              <br />
+              <p
+                style="
+                  text-align: center;
+                  justify-content: center;
+                  font-size: 20px;
+                "
+              >
+                60
+              </p>
+            </div>
+            <div class="baiSe yinYing flex1 shuJu mgr8 ktZi">
+              上门户数(户)
+              <br />
+              <p
+                style="
+                  text-align: center;
+                  justify-content: center;
+                  font-size: 20px;
+                "
+              >
+                42
+              </p>
+            </div>
+            <div class="baiSe yinYing flex1 shuJu mgr8 ktZi">
+              涉猎业务(项)
+              <br />
+              <p
+                style="
+                  text-align: center;
+                  justify-content: center;
+                  font-size: 20px;
+                "
+              >
+                4
+              </p>
+            </div>
+            <div class="baiSe yinYing flex1 shuJu">
+              <p style="text-align: center; color: #666; font-style: italic">
+                数据统计截止2024年10月
+              </p>
+            </div>
+          </div>
+          <!--列表区-->
+          <div class="flex column">
+            <!--列表项-->
+            <div class="baiSe yinYing liebiaoxiang mgt8">
+              <p class="ktZi">上门协议</p>
+              <strong>作用</strong
+              >：预设上门过程中可能存在的争议及其赔偿方式,需要提前上门面签
+              <br /><strong>价格</strong>：法定节假日25元/次 平时价格20元/次
+              <br /><strong>备注</strong>：多猫家庭和服务内容过多需额外收费
+              <!--pdf文件-->
+              <div style="justify-content: center" class="flex">
+                <a href="xieyi.pdf" download="上门协议.pdf">
+                  <button
+                    style="
+                      padding: 10px 20px;
+                      margin-top: 10px;
+                      background-color: #d8bfd8;
+                      color: white;
+                      border: none;
+                      border-radius: 5px;
+                      cursor: pointer;
+                    "
+                  >
+                    下载协议
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div class="baiSe yinYing liebiaoxiang mgt8">
+              <p class="ktZi">上门流程</p>
+              <div>
+                1.客户填写宠物基础信息
+                <br />2.根据信息和上门时间统计总报价
+                <br />3.约定钥匙面交时间和爱宠注意事项
+                <br />4.上门前微信提醒到达→执行喂养工作→离开时拍摄门锁状态
+                <br />5.钥匙交接并结算费用
+              </div>
+            </div>
+            <div class="baiSe yinYing liebiaoxiang mgt8">
+              <p class="ktZi">往期反馈</p>
+              <div class="flex">
+                <!-- 模态窗口结构 -->
+                <div id="myModal" class="modal" style="display: none">
+                  <span class="close">&times;</span>
+                  <img class="modal-content" id="modalImage" />
+                </div>
+                <!-- 图片列表 -->
+                <img
+                  src="./albumFeedBack/1.jpg"
+                  alt="logo"
+                  width="80px"
+                  height="120px"
+                  style="
+                    margin-right: 10px;
+                    cursor: pointer;
+                    margin-left: 8px;
+                    margin-bottom: 8px;
+                  "
+                  onclick="openModal(this.src)"
+                />
+                <img
+                  src="./albumFeedBack/2.jpg"
+                  alt="logo"
+                  width="80px"
+                  height="120px"
+                  style="margin-right: 10px; cursor: pointer"
+                  onclick="openModal(this.src)"
+                />
+                <img
+                  src="./albumFeedBack/3.jpg"
+                  alt="logo"
+                  width="80px"
+                  height="120px"
+                  style="margin-right: 10px; cursor: pointer"
+                  onclick="openModal(this.src)"
+                />
+                <img
+                  src="./albumFeedBack/4.jpg"
+                  alt="logo"
+                  width="80px"
+                  height="120px"
+                  style="margin-right: 10px; cursor: pointer"
+                  onclick="openModal(this.src)"
+                />
+              </div>
+              <script>
+                // 获取模态窗口元素
+                var modal = document.getElementById("myModal");
+                var span = document.getElementsByClassName("close")[0];
+                var modalImg = document.getElementById("modalImage");
+
+                // 打开模态窗口的函数
+                function openModal(src) {
+                  modal.style.display = "flex";
+                  modalImg.src = src;
+                }
+
+                // 关闭模态窗口的函数
+                span.onclick = function () {
+                  modal.style.display = "none";
+                };
+
+                // 点击窗口外区域关闭模态窗口
+                window.onclick = function (event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                };
+              </script>
+            </div>
+          </div>
+        </div>
+        <!--右区-->
+        <div style="flex: 1" class="flex column mar8 mat8">
+          <!--提示区-->
+          <div
+            style="height: 150px; text-align: center"
+            class="baiSe yinYing mgt8"
+          >
+            <p class="ktZi flex">其它涉猎业务</p>
+            <br />
+            <p>积木玩具小贩</p>
+            <p>EXCEL提效师</p>
+            <p>网页制作</p>
+          </div>
+          <!--消息区-->
+          <div style="height: auto" class="baiSe yinYing mgt8">
+            <p>
+              欢迎来到我的网站，很高兴可以为您提供上门喂养服务，希望能在本次服务过程中认识新的人类和动物朋友！
+            </p>
+            <p>
+              如有兴趣也可以看看我的其他业务能否在EXCEL办公/网页设计/白菜闲置上给您提供一些工作生活的便利和优惠！
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

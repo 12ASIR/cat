@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>猫猫影集</title>
+    <style>
+      /* 容器样式 */
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      /* 照片样式 */
+      .photo {
+        width: calc(33% - 10px); /* 减去gap的间距 */
+        cursor: pointer;
+        transition: transform 0.25s ease;
+      }
+      .photo:hover {
+        transform: scale(1.05); /* 鼠标悬停时放大 */
+      }
+      /* 模态窗口样式 */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+      }
+      /* 模态窗口中的图片样式 */
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+      }
+      /* 关闭按钮样式 */
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gallery">
+      <!-- 照片列表 -->
+      <img
+        src="./albumCat/daJu.jpg"
+        alt="Photo 1"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/daJu2.jpg"
+        alt="Photo 2"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/dengDeng.jpg"
+        alt="Photo 3"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/tuanYuan.jpg"
+        alt="Photo 4"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/tuanYuan2.jpg"
+        alt="Photo 5"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/tuanYuan3.jpg"
+        alt="Photo 6"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/yellow.jpg"
+        alt="Photo 7"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/xueli.jpg"
+        alt="Photo 8"
+        class="photo"
+        onclick="openModal(this)"
+      />
+      <img
+        src="./albumCat/zhuJie.jpg"
+        alt="Photo 9"
+        class="photo"
+        onclick="openModal(this)"
+      />
+    </div>
+
+    <!-- 模态窗口 -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" />
+    </div>
+
+    <script>
+      var modal = document.getElementById("myModal");
+      var modalImg = document.getElementById("modalImage");
+      var span = document.getElementsByClassName("close")[0];
+
+      function openModal(img) {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      }
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
