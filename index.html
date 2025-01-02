@@ -2,112 +2,147 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>燕子的喂猫小站</title>
+    <title>猫猫小站</title>
   </head>
   <style>
     @font-face {
       font-family: "LiuHuanCartoon"; /* 指定字体名称 */
       src: url("liuhuankatong.ttf") format("truetype"); /* 指定字体文件路径和格式 */
     }
-      body {
-        margin: 0;
-        height: 100vh;
-        background-color: #eee;
-        font-size: 13px;
-        font-family: "FangSong", "仿宋", sans-serif;
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #f8f8f8;
+      font-size: 13px;
+      font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex1 {
+      flex: 1;
+    }
+    .column {
+      flex-direction: column;
+    }
+    .yinYing {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增加阴影深度 */
+      border-radius: 8px; /* 增加边框圆角 */
+    }
+    .baiSe {
+      background-color: #fff;
+      padding: 20px; /* 增加内边距 */
+    }
+    .mg8 {
+      margin: 16px; /* 增加外边距 */
+    }
+    .mgr8 {
+      margin-right: 8px;
+    }
+    .mgt8 {
+      margin-top: 8px;
+    }
+    .mgl8 {
+      margin-left: 8px;
+    }
+    .shuJu {
+      height: 100px;
+    }
+    .liebiaoxiang {
+      height: 160px;
+    }
+    .daoHang {
+      padding: 10px 20px;
+      border-bottom: 1px solid rgb(201, 201, 201);
+      font-size: 14px;
+      color: #666;
+    }
+    /* 模态窗口样式 */
+    .modal {
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 模态窗口内容样式 */
+    .modal-content {
+      max-width: 60%; /* 限制最大宽度 */
+      max-height: 60%; /* 限制最大高度 */
+      object-fit: contain; /* 保持图片宽高比 */
+    }
+    /* 关闭按钮样式 */
+    .close {
+      position: absolute;
+      top: 60px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .ktZi {
+      font-family: "LiuHuanCartoon", sans-serif;
+      font-size: 15px; /* 增加字体大小 */
+    }
+
+    @media (max-width: 600px) {
+      .ceBian {
+        display: none;
       }
-      .flex {
-        display: flex;
-      }
-      .flex1 {
-        flex: 1;
-      }
-      .column {
+      .neiRong {
         flex-direction: column;
       }
-      .yinYing {
-        box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
-          rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px -0px;
+      .shujuQu {
+        flex-direction: column;
       }
-      .baiSe {
-        background-color: #fff;
-      }
-      .mg8 {
-        margin: 8px;
-      }
-      .mgr8 {
-        margin-right: 8px;
-      }
-      .mgt8 {
-        margin-top: 8px;
+      .youQu {
+        margin-left: 8px;
       }
       .shuJu {
-        height: 100px;
+        margin: 0 0 8px;
+        flex: auto;
       }
-      .liebiaoxiang {
-        height: 160px;
-      }
-      .daoHang {
-        padding: 10px 20px;
-        border-bottom: 1px solid rgb(201, 201, 201);
+      .right-column {
         font-size: 14px;
-        color: #666;
       }
-      /* 模态窗口样式 */
-      .modal {
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      /* 模态窗口内容样式 */
-      .modal-content {
-        max-width: 60%; /* 限制最大宽度 */
-        max-height: 60%; /* 限制最大高度 */
-        object-fit: contain; /* 保持图片宽高比 */
-      }
-      /* 关闭按钮样式 */
-      .close {
-        position: absolute;
-        top: 60px;
-        right: 40px;
-        color: white;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      .ktZi {
-        font-family: "LiuHuanCartoon", sans-serif;
-      }
-  
-      @media (max-width: 600px) {
-        .ceBian {
-          display: none;
-        }
-        .neiRong {
-          flex-direction: column;
-        }
-        .shujuQu {
-          flex-direction: column;
-        }
-        .youQu {
-          margin-left: 8px;
-        }
-        .shuJu {
-          margin: 0 0 8px;
-          flex: auto;
-        }
-      }
-      .ceBian {
-        height: auto;
-      }
+    }
+    .ceBian {
+      height: 650px;
+    }
+
+    .time-display {
+      margin-left: auto; /* 将时间显示区域放置在右侧 */
+      font-size: 16px; /* 字体大小 */
+      color: #333; /* 字体颜色 */
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 1.5em;
+    }
+    .right-column {
+      flex: 1;
+      max: width 400px;
+      overflow: hidden;
+      margin: 8px;
+    }
+    .tiShiQu {
+      height: 150px;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .xiaoXiQu {
+      height: auto;
+      padding: 10px;
+      box-sizing: border-box;
+    }
   </style>
   <body class="flex">
     <!--侧边栏-->
@@ -125,10 +160,8 @@
         "
         class="flex"
       >
-        <img alt="logo" src=".\albumCat\logo.jpg" width="40px" height="40px" />
-        <div style="margin-left: 10px" class="ktZi">
-          燕子（罗弋） <br />17728020974
-        </div>
+        <a src=""></a>
+        <div class="ktZi">燕子-罗弋 <br />17728020974<br />JOKERXOEL</div>
       </div>
       <!--导航栏-->
       <div class="flex1 ktZi">
@@ -146,7 +179,40 @@
     <!--主区域-->
     <div class="flex flex1 column">
       <!--头部栏-->
-      <div style="height: 60px; z-index: 2" class="baiSe yinYing"></div>
+      <div style="height: 60px; z-index: 2" class="baiSe yinYing">
+        <!-- 时间显示区域 -->
+        <div style="padding: 10px" class="ktZi time-display" id="time">
+          Loading time...
+        </div>
+        <script>
+          // 获取时间显示区域的元素
+          const timeDisplay = document.getElementById("time");
+
+          // 函数：更新时间
+          function updateTime() {
+            const now = new Date(); // 获取当前时间
+            const years = String(now.getFullYear()).padStart(4, "0"); // 格式化年
+            const months = String(now.getMonth() + 1).padStart(2, "0"); // 格式化月
+            const days = String(now.getDate()).padStart(2, "0"); // 格式化日
+            const hours = String(now.getHours()).padStart(2, "0"); // 格式化小时
+            const minutes = String(now.getMinutes()).padStart(2, "0"); // 格式化分钟
+            const seconds = String(now.getSeconds()).padStart(2, "0"); // 格式化秒
+
+            // 构建时间字符串
+            const timeString = `🐾${years}年${months}月${days}日 ${hours}:${minutes}:${seconds}`;
+
+            // 将时间字符串显示在页面上
+            timeDisplay.textContent = timeString;
+          }
+
+          // 每秒更新时间
+          setInterval(updateTime, 1000);
+
+          // 初始化时间显示
+          updateTime();
+        </script>
+      </div>
+
       <!--内容区-->
       <div class="flex flex1 neiRong" style="overflow: auto">
         <!--左区-->
@@ -193,9 +259,17 @@
                 4
               </p>
             </div>
-            <div class="baiSe yinYing flex1 shuJu">
-              <p style="text-align: center; color: #666; font-style: italic">
-                数据统计截止2024年10月
+            <div class="baiSe yinYing flex1 shuJu mgr8 ktZi">
+              复购率(%)<!--12/42-->
+              <br />
+              <p
+                style="
+                  text-align: center;
+                  justify-content: center;
+                  font-size: 20px;
+                "
+              >
+                28.6
               </p>
             </div>
           </div>
@@ -203,11 +277,12 @@
           <div class="flex column">
             <!--列表项-->
             <div class="baiSe yinYing liebiaoxiang mgt8">
-              <p class="ktZi">上门协议</p>
+              <p class="ktZi">价格标准和上门协议</p>
               <strong>作用</strong
-              >：预设上门过程中可能存在的争议及其赔偿方式,需要提前上门面签
-              <br /><strong>价格</strong>：法定节假日25元/次 平时价格20元/次
-              <br /><strong>备注</strong>：多猫家庭和服务内容过多需额外收费
+              >：预设上门过程中可能存在的争议,需要提前上门面签 <br /><strong
+                >价格</strong
+              >：法定节假日25元/次 平时价格20元/次 <br /><strong>备注</strong
+              >：多猫家庭和服务内容过多需额外收费
               <!--pdf文件-->
               <div style="justify-content: center" class="flex">
                 <a href="xieyi.pdf" download="上门协议.pdf">
@@ -215,7 +290,7 @@
                     style="
                       padding: 10px 20px;
                       margin-top: 10px;
-                      background-color: #d8bfd8;
+                      background-color: orange;
                       color: white;
                       border: none;
                       border-radius: 5px;
@@ -229,7 +304,7 @@
             </div>
             <div class="baiSe yinYing liebiaoxiang mgt8">
               <p class="ktZi">上门流程</p>
-              <div>
+              <div class="mgl8">
                 1.客户填写宠物基础信息
                 <br />2.根据信息和上门时间统计总报价
                 <br />3.约定钥匙面交时间和爱宠注意事项
@@ -312,25 +387,23 @@
           </div>
         </div>
         <!--右区-->
-        <div style="flex: 1" class="flex column mar8 mat8">
+        <div class="flex column mar8 mat8 right-column">
           <!--提示区-->
-          <div
-            style="height: 150px; text-align: center"
-            class="baiSe yinYing mgt8"
-          >
-            <p class="ktZi flex">其它涉猎业务</p>
-            <br />
-            <p>积木玩具小贩</p>
-            <p>EXCEL提效师</p>
-            <p>网页制作</p>
+          <div class="baiSe yinYing tiShiQu">
+            <p class="ktZi">其它涉猎业务</p>
+            <div>
+              <p>积木玩具小贩</p>
+              <p>EXCEL提效师</p>
+              <p>网页制作</p>
+            </div>
           </div>
           <!--消息区-->
-          <div style="height: auto" class="baiSe yinYing mgt8">
-            <p>
-              欢迎来到我的网站，很高兴可以为您提供上门喂养服务，希望能在本次服务过程中认识新的人类和动物朋友！
+          <div class="baiSe yinYing mgt8 xiaoXiQu">
+            <p class="mgl8">
+              欢迎来到我的网站，希望能在本次服务过程中认识新的人类和动物朋友！
             </p>
-            <p>
-              如有兴趣也可以看看我的其他业务能否在EXCEL办公/网页设计/白菜闲置上给您提供一些工作生活的便利和优惠！
+            <p class="mgl8">
+              如有兴趣也可以看看我的其他业务,希望在EXCEL办公/网页设计/白菜闲置上给您提供一些工作生活的便利和优惠！
             </p>
           </div>
         </div>
